@@ -39,11 +39,11 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> resize() async {
     await _kChannel.invokeMethod(
-        'setGeometry', {'x': 50, 'y': 100, 'width': 700, 'height': 700});
+        'setWindowGeometry', {'x': 50, 'y': 100, 'width': 700, 'height': 700});
   }
 
   Future<void> getGeometry() async {
-    final dynamic map = await _kChannel.invokeMethod('getGeometry');
+    final dynamic map = await _kChannel.invokeMethod('getWindowGeometry');
     setState(() {
       _windowWidth = (map['width'] as int).toString();
       _windowHeight = (map['height'] as int).toString();
@@ -51,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> getScreenSize() async {
-    final dynamic map = await _kChannel.invokeMethod('getScreenSize');
+    final dynamic map = await _kChannel.invokeMethod('getScreenGeometry');
     setState(() {
       _screenWidth = (map['width'] as int).toString();
       _screenHeight = (map['height'] as int).toString();
